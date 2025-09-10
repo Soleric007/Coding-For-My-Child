@@ -1,23 +1,48 @@
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ status: 'error', message: 'Method not allowed' });
   }
 
   try {
     const { form_name, form_email, form_subject, form_phone, form_message, form_botcheck } = req.body;
 
+    // Log for debugging
+    console.log('Received data:', { form_name, form_email, form_subject, form_phone, form_message });
+
     // Basic spam protection
     if (form_botcheck && form_botcheck !== '') {
-      return res.status(400).json({ message: 'Bot detected' });
+      return res.status(400).json({ status: 'error', message: 'Bot detected' });
     }
 
-    // Validate required fields
+    // Validation
     if (!form_name || !form_email || !form_subject || !form_message) {
-      return res.status(400).json({ message: 'Missing required fields' });
+      return res.status(400).json({ 
+        status: 'error', 
+        message: 'Please fill in all required fields.' 
+      });
     }
 
-    // EmailJS server-side sending - Fixed endpoint and payload
-    const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form_email)) {
+      return res.status(400).json({ 
+        status: 'error', 
+        message: 'Please enter a valid email address.' 
+      });
+    }
+
+    // Using EmailJS service
+    const emailJSResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,31 +57,29 @@ export default async function handler(req, res) {
           subject: form_subject,
           phone: form_phone || 'Not provided',
           message: form_message,
-          to_name: 'Website Admin', // Add recipient name
           reply_to: form_email
         }
       })
     });
 
-    const responseText = await emailjsResponse.text();
-    console.log('EmailJS Response:', responseText, 'Status:', emailjsResponse.status);
-
-    if (emailjsResponse.status === 200) {
-      res.status(200).json({ message: 'Email sent successfully!' });
-    } else {
-      console.error('EmailJS Error:', responseText);
-      res.status(500).json({ 
-        message: 'Failed to send email', 
-        error: responseText,
-        status: emailjsResponse.status 
+    console.log('EmailJS response status:', emailJSResponse.status);
+    
+    if (emailJSResponse.ok) {
+      return res.status(200).json({ 
+        status: 'success', 
+        message: 'Thank you! Your message has been sent successfully.' 
       });
+    } else {
+      const errorText = await emailJSResponse.text();
+      console.log('EmailJS error:', errorText);
+      throw new Error(`EmailJS failed: ${errorText}`);
     }
 
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ 
-      message: 'Failed to send email', 
-      error: error.message 
+    console.error('Full error:', error);
+    return res.status(500).json({ 
+      status: 'error', 
+      message: `Error: ${error.message}` 
     });
   }
 }

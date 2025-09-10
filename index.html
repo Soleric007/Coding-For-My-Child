@@ -1228,8 +1228,9 @@ document.getElementById('contact_form').addEventListener('submit', async functio
     
     const result = await response.json();
     
-    if (response.ok) {
-      alert('Message sent successfully!');
+    // Always show success if email was sent (even with warnings)
+    if (result.status === 'success' || response.ok) {
+      alert('Thank you! Your message has been sent successfully.');
       document.getElementById('contact_form').reset();
     } else {
       alert(result.message || 'Failed to send message');
