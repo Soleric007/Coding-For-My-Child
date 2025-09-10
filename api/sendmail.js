@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    // EmailJS server-side sending
+    // EmailJS server-side sending - Fixed endpoint and payload
     const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
       headers: {
@@ -32,18 +32,31 @@ export default async function handler(req, res) {
           subject: form_subject,
           phone: form_phone || 'Not provided',
           message: form_message,
+          to_name: 'Website Admin', // Add recipient name
+          reply_to: form_email
         }
       })
     });
 
-    if (emailjsResponse.ok) {
+    const responseText = await emailjsResponse.text();
+    console.log('EmailJS Response:', responseText, 'Status:', emailjsResponse.status);
+
+    if (emailjsResponse.status === 200) {
       res.status(200).json({ message: 'Email sent successfully!' });
     } else {
-      throw new Error('Failed to send email');
+      console.error('EmailJS Error:', responseText);
+      res.status(500).json({ 
+        message: 'Failed to send email', 
+        error: responseText,
+        status: emailjsResponse.status 
+      });
     }
 
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    res.status(500).json({ 
+      message: 'Failed to send email', 
+      error: error.message 
+    });
   }
 }
