@@ -68,30 +68,13 @@
     </div>
   </div>
   <!-- Header -->
-  <header id="header" class="header">
-    <div class="header-top bg-theme-color-2 sm-text-center p-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="widget no-border m-0 mr-15 pull-right flip sm-pull-none sm-text-center">
-              <ul class="styled-icons icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
-                <li><a target="_blank" href="https://web.facebook.com/profile.php?id=61556721293492"><i class="fa fa-facebook text-white"></i></a></li>
-                <li><a target="_blank" href="https://www.youtube.com/@codingformychild"><i class="fa fa-youtube text-white"></i></a></li>
-                <li><a target="_blank" href="https://wa.me/2349157357774"><i class="fa fa-whatsapp text-white"></i></a></li>
-                <li><a target="_blank" href="https://www.instagram.com/codingformychild_/"><i class="fa fa-instagram text-white"></i></a></li>
-                <li><a target="_blank" href="https://www.linkedin.com/company/codingformychild/?originalSubdomain=ng"><i class="fa fa-linkedin text-white"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-        <div class="header-middle p-0 bg-lightest xs-text-center">
+<header id="header" class="header">
+    <div class="header-middle p-0 bg-lightest xs-text-center">
       <div class="container pt-0 pb-0">
-        <div class="row">
+        <div id="navEdit" class="row">
           <div class="col-xs-12 col-sm-4 col-md-5">
             <div class="widget no-border m-0">
-              <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="javascript:void(0)"><img src="images/logo.png" alt=""></a>
+              <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="javascript:void(0)"><img style="width: 250px;" src="images/logo.png" alt=""></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4">
@@ -129,6 +112,16 @@
               <!-- <li><a href="#gallery">Gallery</a></li> -->
               <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- Social Icons moved here -->
+            <div class="social-nav-icons">
+              <ul class="styled-icons icon-circled">
+                <li><a target="_blank" href="https://web.facebook.com/profile.php?id=61556721293492"><i class="fa fa-facebook text-white"></i></a></li>
+                <li><a target="_blank" href="https://www.youtube.com/@codingformychild"><i class="fa fa-youtube text-white"></i></a></li>
+                <li><a target="_blank" href="https://wa.me/2349157357774"><i class="fa fa-whatsapp text-white"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/codingformychild_/"><i class="fa fa-instagram text-white"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/company/codingformychild/?originalSubdomain=ng"><i class="fa fa-linkedin text-white"></i></a></li>
+              </ul>
+            </div>
             <div id="top-search-bar" class="collapse">
               <div class="container">
                 <form role="search" action="#" class="search_form_top" method="get">
@@ -190,7 +183,7 @@
           data-fontsize="['16']" data-lineheight="['28']"
           data-transform_idle="o:1;s:500"
           data-start="1400"
-          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">Teaching children coding in the simplest way, with fun projects<br>that build confidence, creativity, and school success.
+          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:bold;">Teaching children coding in the simplest way, with fun projects<br>that build confidence, creativity, and school success.
         </div>
 
         <!-- LAYER NR. 4 -->
@@ -218,7 +211,7 @@
           data-fontsize="['28']" data-lineheight="['54']"
           data-transform_idle="o:1;s:500"
           data-start="1000"
-          style="z-index: 7; white-space: nowrap; font-weight:400; border-radius: 30px;">Learn • Build • Grow
+          style="z-index: 7; white-space: nowrap; font-weight:bold; border-radius: 30px;">Learn • Build • Grow
         </div>
 
         <!-- LAYER NR. 2 -->
@@ -240,7 +233,7 @@
           data-fontsize="['16']" data-lineheight="['28']"
           data-transform_idle="o:1;s:500"
           data-start="1400"
-          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">Over <strong>100+</strong> students trained in our Coding for Kids program.<br>Online bootcamps + in-person classes at our Asaba Tech Hub.
+          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:bold;">Over <strong>100+</strong> students trained in our Coding for Kids program.<br>Online bootcamps + in-person classes at our Asaba Tech Hub.
         </div>
 
         <!-- LAYER NR. 4 -->
@@ -290,7 +283,7 @@
           data-fontsize="['16']" data-lineheight="['28']"
           data-transform_idle="o:1;s:500"
           data-start="1400"
-          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">Your child learns to code while building<br>digital skills for school, career, and life.
+          style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:bold;">Your child learns to code while building<br>digital skills for school, career, and life.
         </div>
 
         <!-- LAYER NR. 4 -->
@@ -1334,8 +1327,8 @@ document.getElementById('contact_form').addEventListener('submit', async functio
             <img class="mt-5 mb-20" alt="" src="images/logo.png">
             <p>NBA Bar Center, High Ct Rd, Okpanam Rd, behind cenotaph, beside Multidoor House, GRA Phase I, Asaba 320211, Delta</p>
             <ul class="list-inline mt-5">
-              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">123-456-789</a> </li>
-              <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href="mailto:codingformychild@gmail.com"><span class="__cf_email__" data-cfemail="dfbcb0b1abbebcab9fa6b0aaadbbb0b2beb6b1f1bcb0b2">codingformychild@gmail.com</span></a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="" href="tel:09157357774">09157357774</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="" href="mailto:codingformychild@gmail.com"><span class="__cf_email__" data-cfemail="dfbcb0b1abbebcab9fa6b0aaadbbb0b2beb6b1f1bcb0b2">codingformychild@gmail.com</span></a> </li>
               <!-- <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">www.yourdomain.com</a> </li> -->
             </ul>
           </div>
@@ -1375,7 +1368,7 @@ document.getElementById('contact_form').addEventListener('submit', async functio
           <div class="widget dark">
             <h5 class="widget-title mb-10">Call Us Now</h5>
             <a href="tel:09157357774">
-            <div class="text-gray">
+            <div class="">
               +234 915 735 7774
             </div>
           </a>

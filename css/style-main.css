@@ -6416,14 +6416,17 @@ blockquote p {
 */
 .footer {
   background: #fafafa;
+  color: #ffffff;
 }
 .footer a {
   color: #808080;
+  color: #ffffff;
 }
 .footer a:focus,
 .footer a:hover,
 .footer a:active {
   color: #666666;
+  color: #ffffff;
 }
 .footer .widget .widget-title {
   margin-top: 0px;
@@ -6436,4 +6439,188 @@ blockquote p {
   background-color: #eeeeee;
   border-color: #eeeeee;
   color: #333333;
+  
+}
+#navEdit{
+  align-items: center;
+}
+
+/* Mobile-only styles - applies to screens 767px and below */
+@media (max-width: 767px) {
+  .header-middle .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Logo takes full width on mobile */
+  .header-middle .col-xs-12:first-child {
+    order: 1;
+    flex: 0 0 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Phone and hours sections side by side on mobile */
+  .header-middle .col-xs-12:nth-child(2),
+  .header-middle .col-xs-12:nth-child(3) {
+    order: 2;
+    flex: 0 0 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  /* Adjust text alignment for mobile */
+  .header-middle .col-xs-12:nth-child(2) .widget,
+  .header-middle .col-xs-12:nth-child(3) .widget {
+    text-align: center;
+    pull-right: none;
+    float: none;
+  }
+  
+  /* Reduce font sizes slightly for better fit */
+  .header-middle .col-xs-12:nth-child(2) .font-14,
+  .header-middle .col-xs-12:nth-child(3) .font-13 {
+    font-size: 12px !important;
+  }
+  
+  /* Adjust icon size for mobile */
+  .header-middle .font-36 {
+    font-size: 28px !important;
+  }
+}
+
+/* Fix navigation alignment for social icons only */
+/* Fix navigation alignment for social icons only */
+.menuzord {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  /* padding-right: 20px; */
+}
+.menuzord-menu li{
+  padding-right: 20px;
+}
+
+/* Increase navigation menu text size */
+.menuzord-menu li a {
+  font-size: 17px !important;
+  font-weight: 500;
+  padding: 10px 15px !important;
+}
+
+/* Social icons in navigation - alignment fix only */
+.social-nav-icons {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 15px;
+}
+
+.social-nav-icons .styled-icons {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.social-nav-icons .styled-icons li {
+  list-style: none;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.social-nav-icons .styled-icons li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-nav-icons .styled-icons li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.social-nav-icons .styled-icons li a i {
+  font-size: 20px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.social-nav-icons .styled-icons li a:hover i {
+  color: #ffffff;
+}
+
+/* Responsive adjustments - Hide social icons on mobile by default */
+@media (max-width: 991px) {
+  .menuzord {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  /* Hide social icons by default on mobile */
+  .social-nav-icons {
+    display: none !important;
+  }
+  
+  /* Show social icons only when hamburger menu is open - multiple selectors */
+  .menuzord.menuzord-responsive .social-nav-icons,
+  .menuzord-responsive .menuzord-menu.menuzord-menu-open + .social-nav-icons,
+  .menuzord.menuzord-menu-open .social-nav-icons,
+  .menuzord-menu.menuzord-menu-open ~ .social-nav-icons,
+  .menuzord.menuzord-open .social-nav-icons,
+  .menuzord[data-menuzord="open"] .social-nav-icons,
+  .menuzord.active .social-nav-icons,
+  .navbar-collapse.in .social-nav-icons,
+  .navbar-collapse.show .social-nav-icons {
+    display: flex !important;
+    order: 999;
+    justify-content: center;
+    padding: 15px 0;
+    width: 100%;
+    background-color: inherit;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+  }
+  
+  .social-nav-icons .styled-icons li a {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .social-nav-icons .styled-icons li a i {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .social-nav-icons .styled-icons {
+    gap: 8px;
+  }
+  
+  .social-nav-icons .styled-icons li {
+    margin: 0 3px;
+  }
+  
+  .social-nav-icons .styled-icons li a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-nav-icons .styled-icons li a i {
+    font-size: 16px;
+  }
+  #rs-1-layer-1 {
+    font-size: 32px !important;
+    line-height: 50px !important;
+  }
+
 }
